@@ -42,7 +42,7 @@ llin2.oninput = function () {
 };
 
 usuari.oninput = function () {
-    setValidity(this, validaLlargariaUsuari(this.value, 6, 16) + validaNomUsuari(this));
+    setValidity(this, validaLlargariaUsuari(this.value, 6, 16) + validaNomUsuari(this.value));
 };
 
 password.oninput = function () {
@@ -108,17 +108,19 @@ function validaLlargariaPassword(input, min, max){
     return (input.length > min && input.length < max)? "" : `La mida ha de estar entre ${min} i ${max}.`;
 }
 
-function validaNomUsuari(input,usuaris) {
-    for(var i = 0; i < usuaris.length; i++){
-        if (input.value == usuaris[i]) return "Usuari agafat";
+function validaNomUsuari(input) {
+    for(let i = 0; i < usuaris.length-1; i++){
+        if (usuaris[i-1]==(input)) {
+            return "Usuari agafat";
+        }
     }
     return "";
 }
 
 function validaPasswordStrength(input) {
-    var regExp = /^(?=.\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
+    var regExp = /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
 
-    return regExp.test(input)?"":" BLA BLA CAR";
+    return regExp.test(input)?"":" Ha de contenir minúscula, majúscula, nombre i simbol";
 }
 
 function opcioSelect(input) {
