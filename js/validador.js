@@ -49,6 +49,22 @@ password.oninput = function () {
     setValidity(this, validaLlargariaPassword(this.value, 8, 16) + validaPasswordStrength(this.value));
 };
 
+cp.oninput = function () {
+    setValidity(this, validaLlargariaCP(this.value) + validaNumCP(this.value));
+};
+
+pais.oninput = function () {
+    opcioSelect(this);
+}
+
+captcha.onsubmit = function () {
+    setValidity(this, validaCaptcha(this));
+}
+
+dni.oninput = function () {
+    setValidity(this, validarDni(this.value));
+}
+ 
 
 
 
@@ -69,71 +85,110 @@ function setValidity(element, msgError) {
 
 
 /* CAPTCHA */
-var generaCaptcha = function(){
-    var a = Math.round(Math.random()*10);
-    var b = Math.round(Math.random()*10);
-    
-    var operacio = (b*a%2==0)?"+":"-"
+var generaCaptcha = function () {
+    var a = Math.round(Math.random() * 10);
+    var b = Math.round(Math.random() * 10);
+
+    var operacio = (b * a % 2 == 0) ? "+" : "-"
 
     label_captcha.textContent = a + "" + operacio + "" + b;
 
-    return operacio=="+"?a+b:a-b;
+    return operacio == "+" ? a + b : a - b;
 
 }();
 
-function validaCaptcha(){
+function validaCaptcha() {
     var x = eval(label_captcha.textContent);
     var y = captcha.value;
 
-    if (x == y) return true
+    return (x == y) ? "" : "No es";
 }
 
-function validaLlargaria(input, min, max){
-    return (input.length > min && input.length < max)? "" : `La mida ha de estar entre ${min} i ${max}.`;
+function validaLlargaria(input, min, max) {
+    return (input.length > min && input.length < max) ? "" : `La mida ha de estar entre ${min} i ${max}.`;
 }
 
-function validaLlargariaLlin1(input, min, max){
-    return (input.length > min && input.length < max)? "" : `La mida ha de estar entre ${min} i ${max}.`;
+function validaLlargariaLlin1(input, min, max) {
+    return (input.length > min && input.length < max) ? "" : `La mida ha de estar entre ${min} i ${max}.`;
 }
 
-function validaLlargariaLlin2(input, min, max){
-    return (input.length > min && input.length < max)? "" : `La mida ha de estar entre ${min} i ${max}.`;
+function validaLlargariaLlin2(input, min, max) {
+    return (input.length > min && input.length < max) ? "" : `La mida ha de estar entre ${min} i ${max}.`;
 }
 
-function validaLlargariaUsuari(input, min, max){
-    return (input.length > min && input.length < max)? "" : `La mida ha de estar entre ${min} i ${max}.`;
+function validaLlargariaUsuari(input, min, max) {
+    return (input.length > min && input.length < max) ? "" : `La mida ha de estar entre ${min} i ${max}.`;
 }
 
-function validaLlargariaPassword(input, min, max){
-    return (input.length > min && input.length < max)? "" : `La mida ha de estar entre ${min} i ${max}.`;
+function validaLlargariaPassword(input, min, max) {
+    return (input.length > min && input.length < max) ? "" : `La mida ha de estar entre ${min} i ${max}.`;
 }
 
 function validaNomUsuari(input) {
-    for(let i = 0; i < usuaris.length-1; i++){
-        if (usuaris[i-1]==(input)) {
+    for (let i = 0; i < usuaris.length - 1; i++) {
+        if (usuaris[i - 1] == (input)) {
             return "Usuari agafat";
         }
     }
     return "";
 }
 
+function validaLlargariaCP(input) {
+    return (input.length == 5) ? "" : `La mida ha de ser 5.`;
+}
+
 function validaPasswordStrength(input) {
     var regExp = /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
 
-    return regExp.test(input)?"":" Ha de contenir minúscula, majúscula, nombre i simbol";
+    return regExp.test(input) ? "" : " Ha de contenir minúscula, majúscula, nombre i simbol";
 }
 
-function opcioSelect(input) {
-
+function opcioSelect() {
+    if (pais.value != 3) {
+        document.getElementById("cp").setAttribute("disabled","");
+        document.getElementById("dni").setAttribute("disabled","");
+    } else {
+        document.getElementById("cp").removeAttribute("disabled","");
+        document.getElementById("dni").removeAttribute("disabled","");
+    }
 }
 
-function nomesLletres(input){
+function nomesLletres(input) {
     var regExp = /^[a-zA-Z\s]*$/;
 
-    return regExp.test(input.toUpperCase())?"":" Només es permeten lletres";
+    return regExp.test(input.toUpperCase()) ? "" : " Només es permeten lletres";
 }
 
-function nomesNums(input){
+function nomesNums() {
     return /^[0-9]*$/.test.input ? "" : " Només es permeten números";
 }
 
+function validaNumCP(input) {
+    var regExp = /^[0-9]*$/;
+
+    return regExp.test(input) ? "" : " Només es poden escriure nombres.";
+}
+
+function validarDni(dni) {
+    var numero
+    var letr
+    var letra
+    var expresion_regular_dni
+   
+    expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+   
+    if(expresion_regular_dni.test (dni) == true){
+       numero = dni.substr(0,dni.length-1);
+       letr = dni.substr(dni.length-1,1);
+       numero = numero % 23;
+       letra='TRWAGMYFPDXBNJZSQVHLCKET';
+       letra=letra.substring(numero,numero+1);
+      if (letra!=letr.toUpperCase()) {
+         return ('Dni erroneo, la letra del NIF no se corresponde');
+       }else{
+         return "";
+       }
+    }else{
+       return 'Dni erroneo, formato no válido';
+     }
+  }
