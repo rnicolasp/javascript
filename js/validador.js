@@ -17,7 +17,7 @@ form.onsubmit = function (event) {
         element.dispatchEvent(new Event("input"));
     });
 
-    validaCaptcha();
+    setValidity(captcha, validaCaptcha());
 
     if (!form.checkValidity()) {
         event.preventDefault();
@@ -55,10 +55,6 @@ cp.oninput = function () {
 
 pais.oninput = function () {
     opcioSelect(this);
-}
-
-captcha.onsubmit = function () {
-    setValidity(this, validaCaptcha(this));
 }
 
 dni.oninput = function () {
