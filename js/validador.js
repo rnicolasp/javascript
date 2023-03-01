@@ -66,8 +66,6 @@ dni.oninput = function () {
 }
  
 
-
-
 /* Funció que marca els inputs com a vàlids/invàlids*/
 function setValidity(element, msgError) {
     element.classList.remove("is-invalid");
