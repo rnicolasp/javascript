@@ -11,9 +11,11 @@ const camerasOpportunitySpirit = ['FHAZ', 'RHAZ', 'NAVCAM', 'PANCAM', 'MINITES']
 btnCarrega.onclick = carrega;
 selectRover.oninput = carregaCameras;
 
+carregaCameras();
+
 function carregaCameras() {
     var arrayARecorrer = []
-    if (selectRover.ariaValueMax.toLowerCase() == "Curiosity".toLowerCase) {
+    if (selectRover.value == "curiosity") {
         arrayARecorrer = camerasCuriosity;
     } else {
         arrayARecorrer = camerasOpportunitySpirit;
@@ -27,24 +29,21 @@ function carregaCameras() {
     selectCameras.innerHTML = resultat;
 }
 
-carregaCameras();
 
 function carrega() {
 
-
-
     var roverSeleccionat = selectRover.value;
-    var URL = `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverSeleccionat}/photos?&api_key=a20QuAMHhKUFO8KrqnV4JNzrlpd9igSpOjWSzvmy`;
+    var paginaSelected = selectPagines.value;
+    var cameraSelected = selectCameras.value;
 
-    if (selectCameras.value) {
-        URL += `&camera=${selectCameras.value}`;
-    }
-
-    URL += `&page=${selectPagines.value}`;
+    var URL = `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverSeleccionat}/photos?&api_key=a20QuAMHhKUFO8KrqnV4JNzrlpd9igSpOjWSzvmy&page=${paginaSelected}`;
 
     if (fecha.value) {
         URL += `&earth_date=${fecha.value}`;
-        console.log(URL);
+    }
+
+    if (cameras.value) {
+        URL += `&camera=${cameraSelected}`;
     }
 
     fetch(URL)
@@ -74,10 +73,15 @@ function carregaDades(data) {
             let earth_date = element.earth_date;
             let dataArray = earth_date.split("-");
             let novaData = `${dataArray[2]}/${dataArray[1]}/${dataArray[0]}`;
-            resultat += `<div class="col-6 col-sm-3"><p>
-            <label>Imatge amb id ${element.id} de dia ${novaData}. Rover name: ${element.rover.name} </label>
-            <img class="img-fluid" src='${element.img_src}'></img>
-            </p></div>`
+            resultat += `<div class="card" style = "width: 18rem;">
+                            <a href="${element.img_src}" target="_blank"><img src = "${element.img_src}" class=" mt-2 card-img-top" alt = "..." ></a>
+                            <div class="card-body">
+                                <h5 class="card-title">${element.rover.name}</h5>
+                                <p class="card-text">Imatge ${element.id}.</p>
+                                <p>Dia ${novaData}.</p>
+                                <p class="card-text">Càmara ${element.camera.name}</p>
+                             </div>
+                        </div>`
         })
     } else {
         resultat = "No s'han trobat dades";

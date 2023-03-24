@@ -20,28 +20,31 @@
     <div class="container">
         <form action="#">
 
-            <div class="row">
+            <div class="d-flex justify-content-around">
                 <select name="" id="rover">
                     <option value="curiosity">Curiosity</option>
                     <option value="opportunity">Opportunity</option>
                     <option value="spirit">Spirit</option>
                 </select>
 
-                <select name="Seleccion camara" id="camera">
-                </select>
-                <select name="Selecciona pagina" id="selectPagines">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
+                <select name="Seleccion camara" id="cameras">
                 </select>
 
                 <input type="date" name="Fecha de las fotos" id="data">
+
+                <select name="Selecciona pagina" class="pl-4" id="pagina">
+                    <option value="1">Pàgina 1</option>
+                    <option value="2">Pàgina 2</option>
+                    <option value="3">Pàgina 3</option>
+                    <option value="4">Pàgina 4</option>
+                </select>
+
+                <div >
+                    <input type="button" id="btnCarrega" class="btn btn-success" value="Càrrega">
+                </div>
             </div>
 
-            <div>
-                <input type="button" id="btnCarrega" value="Càrrega">
-            </div>
-
-            <div class="row" id="resultat">
+            <div class="row d-flex justify-content-around" id="resultat">
 
             </div>
 
