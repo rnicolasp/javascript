@@ -1,4 +1,3 @@
-const tbody = document.querySelector("#tbody");
 const btnCarrega = document.querySelector("#btnCarrega");
 const act1 = document.querySelector("#act1");
 const act2 = document.querySelector("#act2");
@@ -69,31 +68,98 @@ function exercici3(xml) {
 
 
 function exercici4(xml) {
-  var peliculasDVD = xml.querySelectorAll(`pelicula[anio>'2000'] titulo[formato='DVD']`);
+  var peliculas = xml.getElementsByTagName("pelicula");
   var resultado = "";
-  
-  for (var i = 0; i < peliculasDVD.length; i++) {
-    resultado += "<li>" + peliculasDVD[i].textContent + "</li>";
+
+  for (var i = 0; i < peliculas.length; i++) {
+    var anio = peliculas[i].getElementsByTagName("anio")[0].textContent;
+    var formato = peliculas[i].querySelectorAll("titulo[formato='DVD']");
+
+    if (anio > 2000 && formato.length > 0) {
+      resultado += "<li>" + peliculas[i].getElementsByTagName("titulo")[0].textContent + "</li>";
+    }
   }
-  
+
   act4.innerHTML = resultado;
 }
 
 function exercici5(xml) {
 
 }
+
+
 function exercici6(xml) {
+  const pelicules = xml.getElementsByTagName('pelicula');
+  let sinopsi = '';
+  for (let i = 0; i < pelicules.length; i++) {
+    const titol = pelicules[i].getElementsByTagName('titulo')[0];
+    if (titol.textContent === 'Forrest Gump') {
+      sinopsi = pelicules[i].getElementsByTagName('sinopsis')[0].textContent;
+      break;
+    }
+  }
 
+  // Imprimir la sinopsi
+  act6.innerHTML = sinopsi;
 }
+
+
 function exercici7(xml) {
+  const titulos = xml.getElementsByTagName('titulo');
+  const generos = xml.getElementsByTagName('genero');
 
+  const titulosDrama = [];
+  var resultado = "";
+  for (let i = 0; i < titulos.length; i++) {
+    for (let j = 0; j < generos.length; j++) {
+      if (generos[j].textContent === 'Drama' && generos[j].parentNode === titulos[i].parentNode.getElementsByTagName('generos')[0]) {
+        titulosDrama.push(titulos[i]);
+        break;
+      }
+    }
+  }
+
+  for (let i = 0; i < titulosDrama.length; i++) {
+    resultado += "<li>" + titulosDrama[i].textContent + "</li>";
+  }
+
+  act7.innerHTML = resultado;
 }
+
 function exercici8(xml) {
-
 }
-function exercici9(xml) {
 
+function exercici9(xml) {
+  const generes = xml.getElementsByTagName('genero');
+  const generesCount = {};
+  for (let i = 0; i < generes.length; i++) {
+    const nomGenere = generes[i].textContent;
+    generesCount[nomGenere] = (generesCount[nomGenere] || 0) + 1;
+  }
+
+  let genereMesFreq = '';
+  let maxCount = 0;
+  for (const nomGenere in generesCount) {
+    if (generesCount[nomGenere] > maxCount) {
+      genereMesFreq = nomGenere;
+      maxCount = generesCount[nomGenere];
+    }
+  }
+
+  act9.innerHTML = genereMesFreq;
 }
 function exercici10(xml) {
+  const pelicules = xml.getElementsByTagName('pelicula');
+  const peliculesTomHanks = [];
+  for (let i = 0; i < pelicules.length; i++) {
+    const actors = pelicules[i].getElementsByTagName('actor');
+    for (let j = 0; j < actors.length; j++) {
+      if (actors[j].textContent === 'Tom Hanks') {
+        peliculesTomHanks.push(pelicules[i].getElementsByTagName('titulo')[0].textContent);
+        break;
+      }
+    }
+  }
 
+  act10.innerHTML = peliculesTomHanks;
 }
