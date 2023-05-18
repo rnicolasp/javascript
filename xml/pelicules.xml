@@ -83,21 +83,50 @@
     </actores>
     <sinopsis>El Laberinto del Fauno es una película de drama, fantasía y guerra dirigida por Guillermo del Toro. La historia sigue a una niña llamada Ofelia durante la Guerra Civil española, mientras se enfrenta a desafíos mágicos y aterradores en un mundo de fantasía oculto en un laberinto.</sinopsis>
   </pelicula>
+<pelicules>
+    <pelicula>
+        <titulo>El Padrino</titulo>
+        <director vivo="N">Francis Ford Coppola</director>
+        <año>1972</año>
+        <generos>
+            <genero>Crimen</genero>
+            <genero>Drama</genero>
+        </generos>
+        <actores>
+            <actor>Marlon Brando</actor>
+            <actor>Al Pacino</actor>
+            <actor>James Caan</actor>
+        </actores>
+    </pelicula>
 
-  <pelicula>
-    <titulo id="6" formato="Blu-ray">Interestelar</titulo>
-    <director>Christopher Nolan</director>
-    <anio>2014</anio>
-    <generos>
-      <genero>Ciencia ficción</genero>
-      <genero>Aventura</genero>
-      <genero>Drama</genero>
-    </generos>
-    <actores>
-      <actor>Matthew McConaughey</actor>
-      <actor>Anne Hathaway</actor>
-      <actor>Michael Caine</actor>
-    </actores>
-    <sinopsis>Interestelar es una película de ciencia ficción, aventura y drama dirigida por Christopher Nolan. La historia sigue a un grupo de astronautas que viajan a través de agujeros de gusano en busca de un nuevo hogar para la humanidad en un futuro distópico. La película es conocida por su espectacular cinematografía y conceptos científicos intrigantes.</sinopsis>
-  </pelicula>
-</peliculas>
+    <pelicula>
+        <titulo>Forrest Gump</titulo>
+        <director vivo="S">Robert Zemeckis</director>
+        <año>1994</año>
+        <generos>
+            <genero>Comedia</genero>
+            <genero>Drama</genero>
+            <genero>Romance</genero>
+        </generos>
+        <actores>
+            <actor>Tom Hanks</actor>
+            <actor>Robin Wright</actor>
+            <actor>Gary Sinise</actor>
+        </actores>
+    </pelicula>
+
+    <pelicula>
+        <titulo>Avatar</titulo>
+        <director vivo="S">James Cameron</director>
+        <año>2009</año>
+        <generos>
+            <genero>Aventura</genero>
+            <genero>Fantasia</genero>
+            <genero>Genocidio Planetario</genero>
+        </generos>
+        <actores>
+            <actor>Robin AS</actor>
+            <actor>Laurent Gay</actor>
+            <actor>Stuart little</actor>
+        </actores>
+    </pelicula>
