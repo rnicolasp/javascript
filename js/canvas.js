@@ -36,15 +36,15 @@ function rellanaCelda(contexto, fila, columna, color, texto){
 
 }
 
-function dibujaCuadricula(contexto) {
-    for (let fila = 0; fila < NUM_FILAS; fila++) {
-        rellanaCelda(contexto, fila, 0, "lightgray", fila);
-        for (let columna = 0; columna < NUM_COLUMNAS; columna++){
+function dibujaCuadricula(contexto){
+
+    for(let fila = 0; fila < NUM_FILAS; fila++){
+        for(let columna = 0; columna < NUM_COLUMNAS; columna++) {
             contexto.strokeRect(columna * ANCHO_CELDA, fila * ALTO_CELDA, ANCHO_CELDA, ALTO_CELDA);
-            rellanaCelda(contexto, columna, 0, "lightgray", columna);
         }
     }
+
 }
 
-dibujaCuadricula(canvas1);
-dibujaCuadricula(canvas2);
+dibujaCuadricula(contexto1);
+dibujaCuadricula(contexto2);
