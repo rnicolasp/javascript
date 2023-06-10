@@ -6,7 +6,7 @@ const act4 = document.querySelector("#act4");
 const act5 = document.querySelector("#act5");
 const act6 = document.querySelector("#act6");
 const act7 = document.querySelector("#act7");
-const act8 = document.querySelector("#act");
+const act8 = document.querySelector("#act8");
 const act9 = document.querySelector("#act9");
 const act10 = document.querySelector("#act10");
 
@@ -43,11 +43,11 @@ function exercici1(xml) {
 
 function exercici2(xml) {
   let resultat = "";
-  const peliculas = xml.getElementsByTagName('pelicula');
+  const peliculas = xml.querySelectorAll("pelicula");
   for (let i = 0; i < peliculas.length; i++) {
-    const anio = peliculas[i].getElementsByTagName('anio')[0].textContent;
+    let anio = peliculas[i].querySelector("anio").textContent;
     if (anio >= 2001) {
-      const titulo = peliculas[i].getElementsByTagName('titulo')[0].textContent;
+      let titulo = peliculas[i].querySelector("titulo").textContent;
       resultat += (`<li>${titulo}</li>`);
     }
   }

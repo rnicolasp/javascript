@@ -1,0 +1,90 @@
+<svg id="imatgeSVG"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <line x1="0" x2="5000" y1="70" y2="70" stroke="green" stroke-width="5"/>
+  <g id="potatoGlaDOS">
+    <circle cx="145" cy="150" r="35" style="fill: rgb(181,116,43)" />
+    <circle cx="120" cy="145" r="2" style="fill: rgb(181,146,43)" />
+    <circle cx="128" cy="157" r="2" style="fill: rgb(181,146,43)" />
+    <circle cx="175" cy="140" r="40" style="fill: rgb(181,116,43)" />
+    <circle cx="175" cy="140" r="27" style="fill: rgb(186,169,149)" />
+    <circle cx="140" cy="147" r="2" style="fill: rgb(181,146,43)" />
+    <circle cx="175" cy="140" r="18" style="fill: rgb(145,130,114)" />
+    <circle cx="175" cy="140" r="7" style="fill: rgb(249,225,11)" />
+    <rect width="10" height="15" x="171" y="166" style="fill: rgb(186,169,149)" />
+  </g>
+  <g id="potatoGlaDOSAnim">
+    <circle cx="145" cy="150" r="35" style="fill: rgb(181,116,43)" />
+    <circle cx="120" cy="145" r="2" style="fill: rgb(181,146,43)" />
+    <circle cx="128" cy="157" r="2" style="fill: rgb(181,146,43)" />
+    <circle cx="175" cy="140" r="40" style="fill: rgb(181,116,43)" />
+    <circle cx="175" cy="140" r="27" style="fill: rgb(186,169,149)" />
+    <circle cx="140" cy="147" r="2" style="fill: rgb(181,146,43)" />
+    <circle cx="175" cy="140" r="18" style="fill: rgb(145,130,114)" />
+    <circle cx="175" cy="140" r="7" style="fill: rgb(249,225,11)" />
+    <rect width="10" height="15" x="171" y="166" style="fill: rgb(186,169,149)" />
+  </g>
+  <g id="wheatley">
+    <defs>
+      <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+        <stop offset="1%" style="stop-color:rgb(0,67,223);
+      stop-opacity:0" />
+        <stop offset="100%" style="stop-color:rgb(124,163,255);stop-opacity:1" />
+      </radialGradient>
+    </defs>
+    <circle cx="545" cy="350" r="65" style="fill: rgb(255,248,220)" />
+    <circle cx="545" cy="350" r="47" style="fill: rgb(105,105,105)" />
+    <circle cx="545" cy="350" r="44" style="fill: rgb(255,248,220)" />
+    <circle cx="545" cy="350" r="44" style="fill: rgb(255,248,220)" />
+    <circle cx="545" cy="350" r="30" style="fill: rgb(105,105,105)" />
+    <circle cx="545" cy="350" r="26" style="fill: url(#grad1)" />
+    <rect width="120" height="10" x="485" y="290" style="fill: rgb(105,105,105)" />
+    <rect width="120" height="10" x="485" y="400" style="fill: rgb(105,105,105)" />
+  </g>
+  <g>
+  <text x="500" y="50" fill="red" class="textoLoco" >Portal 2 Gameplay</text>
+  </g>
+
+  <g id="estrella">
+  <polygon points="50, 160 55, 180 70, 180 60, 190 65, 205 50, 195 35, 205 40, 190 30, 180 45, 180" style="fill: red"/> 
+  </g>
+
+  <text x="50" y="330" fill="blue" class="textoLoco" >Pulsa el "elipse"</text>
+  <a xlink:href="https://combineoverwiki.net/images/thumb/c/c0/Turretportal.jpg/250px-Turretportal.jpg" target="_blank"><ellipse cx="200" cy="400" rx="40" ry="40"/></a> 
+
+  <use xlink:href="#potatoGlaDOS" class="anim" x="700" y="175" />
+  <use xlink:href="#potatoGlaDOS" x="1000" y="80" />
+    <use xlink:href="#estrella" x="1000" y="50" />
+  <!-- 
+  <use xlink:href="#my-group" style="fill:pink; stroke:black;">
+    <animate attributeName="x" dur="2s" values="200; 270; 120; 200;" repeatCount="1" fill="freeze" />
+  </use>
+   
+
+
+    -->
+  <style>
+  .anim {
+  margin: auto;
+  border: 1px solid black;
+  width: 200px;
+  height: 100px;
+  background-color: coral;
+  color: white;
+  animation: mymove 5s infinite;
+}
+    #imatgeSVG {
+    background-color: pink;
+    }
+
+    @keyframes mymove {
+  50% {transform: rotate(10deg);}
+}
+
+.textoLoco {
+  font-family: "Lucida Console", "Courier New", monospace;
+  font-size: 40px;
+}
+  </style>
+
+</svg>
