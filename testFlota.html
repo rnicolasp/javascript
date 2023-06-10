@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="flota.css">
+    <title>Hundir la Flota</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@1000" rel="stylesheet">
+</head>
+
+<body>
+    <img id="spider-logo" src="img-spider/spider-logo.png" alt="logo spider-man">
+
+    <div class="game-container">
+        <div class="board-container">
+            <div>
+                <p>Tu tablero</p>
+                <canvas id="canvas2" width="400" height="400"></canvas>
+            </div>
+            <div>
+                <p>Log</p>
+                <textarea id="logMovimientos" rows="26" cols="50" readonly></textarea>
+            </div>
+            <div>
+                <p>Tablero enemigo</p>
+                <canvas id="canvas1" width="400" height="400"></canvas>
+            </div>
+        </div>
+
+    </div>
+    <button class="button-49" id="resetButton">Reset</button>
+    <script src="hundir_la_flota.js"></script>
+</body>
+
+</html>
